@@ -126,6 +126,43 @@ let sdbrbutton = document.querySelector("#sdbrbutton")
 sdbrbutton.onclick = () => {
   document.querySelector("nav").classList.toggle("ndisplay")
 }
+let schart = document.getElementById("schart")
+const sdata = {
+  labels: [
+    'HTML',
+    'CSS',
+    'JavaScript',
+    'GitHub',
+    'Git',
+    'Node.js',
+    'Express.js',
+    'MongoDB',
+    'APIs'
+  ],
+  datasets: [{
+    label: 'My skills data',
+    data: [100, 100, 95, 95, 100, 80, 90, 85, 75],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'lightgray',
+      'darkgray',
+      'greenyellow',
+      'blue',
+      'green',
+      'red'
+    ],
+    hoverOffset: 4
+  }]
+};
+new Chart(schart,{
+  type: 'bar',
+  data:sdata,
+  options: {
+    indexAxis: 'y'
+  }
+})
 // const scroll = new LocomotiveScroll({
 //     el: document.querySelector('#container'),
 //     smooth: true
