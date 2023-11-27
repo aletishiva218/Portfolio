@@ -73,14 +73,22 @@ var typed = new Typed('#kme', {
     backDelay: 1500,
     backSpeed: 30,
 });
-const ctx = document.querySelector('#Chart');
-
 let project_button = document.querySelectorAll(".projects > div > div > div > button")
+let project_chart = document.querySelector("#project > div > div")
 let projects = document.querySelector(".projects")
+let ctx1;
+let prtitletag = document.querySelector("#project > div h2")
+let primgtag = document.querySelector("#project > div > div > div > img")
+let prdesctag = document.querySelector("#project > div > div > div p")
 Array.from(project_button).forEach((button,index)=>{
   button.onmouseenter = () => {
+    let prtitle = Object.keys(prdata)[index];
+    prtitletag.innerHTML = prtitle
+    prdesctag.innerHTML = prdata[prtitle].description
+    primgtag.src = "assets/"+prdata[prtitle].img;
     projects.classList.add("projects-none")
-    ctx.innerHTML = ""
+    let ctx = document.createElement("canvas")
+    ctx.setAttribute("id","Chart")
     const data = {
       labels: [
         'HTML',
@@ -89,7 +97,7 @@ Array.from(project_button).forEach((button,index)=>{
       ],
       datasets: [{
         label: 'My First Dataset',
-        data: [70, 100, 20],
+        data: prdata[prtitle].data,
         backgroundColor: [
           'rgb(255, 99, 132)',
           'rgb(54, 162, 235)',
@@ -105,35 +113,14 @@ Array.from(project_button).forEach((button,index)=>{
         borderColor:"transparent",
       }
     });
+    project_chart.appendChild(ctx)
+    ctx1 = ctx
   }
   button.onmouseleave = () => {
     projects.classList.remove("projects-none")
+    project_chart.removeChild(ctx1)
   }
 })
-var options = {
-  series: [{
-  data: [100,100,100,30,60,70,90,90,100,100]
-}],
-  chart: {
-  type: 'bar',
-  height: 350
-},
-plotOptions: {
-  bar: {
-    borderRadius: 4,
-    horizontal: true,
-  }
-},
-dataLabels: {
-  enabled: true
-},
-xaxis: {
-  categories: ['HTML','CSS','JavaScript','PHP','MySQL','Node.js','MongoDB','Express.js','Git','GitHub'],
-}
-};
-
-var chart = new ApexCharts(document.querySelector("#schart"), options);
-chart.render();
 
 let sdbrbutton = document.querySelector("#sdbrbutton")
 sdbrbutton.onclick = () => {
