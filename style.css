@@ -76,129 +76,163 @@ nav a:hover{
     color: greenyellow;
 }
 #page2{
-    padding-top:1vh;
     position: relative;
 }
 #page2 h2{
     font-weight: lighter;
     text-align: center;
 }
+#page2{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: #00779d;
+}
 .projects{
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color:#005985;
-    z-index: 2;
-    opacity: 1;
-    transition: opacity 0.5s;
+   background-color: inherit;
+   opacity: 1;
+   transition: opacity 0.3s;
 }
-.projectshover{
+.projects-none{
     opacity: 0;
 }
 .projects > div{
-    height: 100%;
-    width: 100%;
     position: relative;
+    width: 100%;
+    height: 100%;
 }
 .projects > div > div{
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
-    transform: translate(-50%,-55%);
-    /* display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    column-gap: 1vw; */
+    transform: translate(-50%,-60%);
     display: grid;
     grid-template-columns: repeat(6,1fr);
-    column-gap: 1vw;
+    /* grid-template-columns: repeat(2,1fr); */
+    column-gap: 1rem;
+    row-gap: 0.5rem;
 }
-.projects > div >  div div{
-    background-color: #0170a7;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
-    align-items: center;
-    row-gap: 2vh;
-    justify-content: space-evenly;
-    box-shadow: 0 0 10px 0px black;
-}
-.projects div div img{
-   width: 8rem;
-    height: fit-content;
-}
-.projects div div a{
-    text-wrap: nowrap;
-    text-decoration: none;
- }
-.projects button{
-    border: none;
-    border-radius: 1rem;
-    padding: 0.5vw;
-    background-color: #005985;
-    cursor: pointer;
-    background-color: #0382c2;
-}
-.project{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    top: 0;
-    background-color: transparent;
-    transition: background-color 0.3s;
-}
-.projectbghover{
-    background-color: #0170a7;
-}
-
-.project > div{
-    position: relative;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-.project > div img{
-    position: absolute;
-    width: 23vw;
-    top: 17vh;
-    left: 30%;
-    transform: translateX(-30%);
-    box-shadow: 0 0 10px 0px black;
-    border-radius: 2rem;
-    max-width: 15rem;
-}
-.project > div h2{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top:1vh;
-}
-.project > div p{
-    position: absolute;
-    left: 10vw;
-   bottom: 15vh;
-    margin-right: 40vw;
+.projects > div > h2{
     text-align: center;
 }
-.project > div #chart1{
-    position: absolute;
-    top: 50%;
-    right: 2vw;
-    transform: translateY(-50%);
-    /* box-shadow: 0 0 10px 0px black; */
-    background-color: white;
+.projects > div > div > div{
+    /* background-color: #00ace5; */
+    box-shadow: 0 0 5px black;
+    border-radius: 1rem;
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem;
 }
-.project > div #chart2{
-    position: absolute;
-    right: 2vw;
-    top: 30%;
-    transform: translateY(-30%);
-    display: none;
+.projects > div > div > div > img{
+    max-width: 11rem;
+    border-radius: 0.5rem;
+    }
+   .projects > div > div > div > a{
+    text-decoration: none;
+    box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.237), 5px 5px 10px rgba(0, 0, 0, 0.237);
+    border-radius: 1rem;
+    padding: 0.3rem;
+}
+.projects > div > div > div > button{
+    border: none;
+    background-color: transparent;
+    box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.237), 5px 5px 10px rgba(0, 0, 0, 0.237);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
 }
 
+#project{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#Chart{
+    width:20rem !important;
+    height: fit-content !important;
+    box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.237), 5px 5px 10px rgba(0, 0, 0, 0.237);
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+#project > div{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#project > div h2{
+    text-align: center;
+}
+#project > div > div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%;
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+}
+#project > div > div > div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    align-items: center;
+    box-shadow: -8px -8px 10px rgba(255, 255, 255, 0.237), 5px 5px 10px rgba(0, 0, 0, 0.237);
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+#project > div > div > div > img{
+    width: 15rem;
+}
+#project > div > div > div p{
+    text-align: center;
+}
+@media only screen and (max-width:801px) {
+    #project > div > div > div > img{
+        width: 15vw;
+        min-width: 8rem;
+    }
+}
+@media only screen and (max-width:760px) {
+    #Chart{
+        width:40vw !important;
+        height: fit-content !important;
+        min-width: 10rem;
+    }
+    #project > div > div{
+        flex-direction: column;
+        row-gap: 2rem;
+    }
+}
+@media only screen and (max-width:1242px) {
+    .projects > div > div{
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 2rem;
+    row-gap: 2rem;
+    }
+    .projects > div > div > div{
+        padding: 0.5rem;
+        row-gap: 1rem;
+    }
+}
+@media only screen and (max-width:659px) {
+    .projects > div > div{
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    }
+    .projects > div > div > div > img{
+        width: 7rem;
+    }
+    .projects > div  > div > div{
+        row-gap: 0.5rem;
+    }
+}
 #page3,#page4{
    position: relative;
    z-index: 2;
@@ -257,15 +291,6 @@ nav a:hover{
     box-shadow: 0 0 5px 0 black;
 }
 @media only screen and (max-width:945px){
-    .projects > div > div{
-        grid-template-columns: 1fr 1fr;
-        column-gap: 2vw;
-        row-gap: 2vh;
-    }
-    .projects > div > div img{
-        width: 12vw;
-        max-width: 4rem;
-    }
     #page3 > div{
         flex-direction: column;
         row-gap: 1vh;
@@ -305,30 +330,6 @@ nav a:hover{
         margin: 0.4rem;
         background-color: white;
         border-radius: 1rem;
-    }
-}
-@media only screen and (max-width:810px) {
-    .project > div #chart1{
-        display: none;
-    }
-    .project > div #chart2{
-        display: block;
-    }
-}
-@media only screen and (max-width:613px) {
-    .project > div #chart2{
-        display: none;
-    }
-    .project > div img{
-        left: 50%;
-        transform: translateX(-50%);
-        min-width: 15rem;
-    }
-    .project > div p{
-        left: unset;
-        padding: 0 2vw;
-        margin-right: unset;
-        text-align: center;
     }
 }
 /* #banimation{

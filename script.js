@@ -73,99 +73,42 @@ var typed = new Typed('#kme', {
     backDelay: 1500,
     backSpeed: 30,
 });
-let pr_buttons = document.querySelectorAll(".projects button")
-let projects = document.querySelector(".projects");
-let project = document.querySelector(".project");
-let prtitletag = document.querySelector(".project > div h2")
-let prpartag = document.querySelector(".project > div p")
-let imgtag = document.querySelector(".project > div img")
-Array.from(pr_buttons).forEach((e,index)=>{
-    e.onmouseenter = () => {
-        projects.classList.add("projectshover")
-        project.classList.add("projectbghover")
-        let prtitle = Object.keys(prdata)[index];
-        let prpar = prdata[prtitle].description
-        let img = prdata[prtitle].img
-        let data = prdata[prtitle].data
-        prpartag.innerHTML = prpar
-        prtitletag.innerHTML = prtitle
-        imgtag.src = `assets/${img}`
-        var options1 = {
-          series: data,
-          chart: {
-          type: 'polarArea',
-        },
-        stroke: {
-          colors: ['transparent']
-        },
-        fill: {
-          opacity: 0.8
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
-        };
-        document.querySelector("#chart2").innerHTML = ""
-        var chart = new ApexCharts(document.querySelector("#chart2"), options1);
-        chart.render();
-        var options = {
-            series: [{
-            data:data
-          }],
-            chart: {
-            height: 300,
-            type: 'bar',
-            events: {
-              click: function(chart, w, e) {
-                // console.log(chart, w, e)
-              }
-            }
-          },
-          colors:['rgb(255, 0, 0)','rgb(0, 179, 255)','rgb(255, 255, 0)'],
-          plotOptions: {
-            bar: {
-              columnWidth: '45%',
-              distributed: true,
-            }
-          },
-          dataLabels: {
-            enabled: true
-          },
-          legend: {
-            show: false
-          },
-          xaxis: {
-            categories: [
-              'HTML',
-              'CSS',
-              'JavaScript',
-            ],
-            labels: {
-              style: {
-                colors: ['red','rgb(0, 179, 255)','yellow'],
-                fontSize: '12px'
-              }
-            }
-          }
-          };
-          document.querySelector("#chart1").innerHTML = ""
-          var chart = new ApexCharts(document.querySelector("#chart1"), options);
-          chart.render();
-    }
-    e.onmouseleave = () => {
-        projects.classList.remove("projectshover")
-        project.classList.remove("projectbghover")
-        prtitletag.innerHTML = ""
-        
-    }
+const ctx = document.querySelector('#Chart');
+
+let project_button = document.querySelectorAll(".projects > div > div > div > button")
+let projects = document.querySelector(".projects")
+Array.from(project_button).forEach((button,index)=>{
+  button.onmouseenter = () => {
+    projects.classList.add("projects-none")
+    ctx.innerHTML = ""
+    const data = {
+      labels: [
+        'HTML',
+        'CSS',
+        'JavaScript',
+      ],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [70, 100, 20],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)'
+        ]
+      }]
+    };
+            new Chart(ctx,{
+      type: 'polarArea',
+      data: data,
+      options: {
+        color:'white',
+        borderColor:"transparent",
+      }
+    });
+  }
+  button.onmouseleave = () => {
+    projects.classList.remove("projects-none")
+  }
 })
 var options = {
   series: [{
